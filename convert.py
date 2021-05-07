@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 import natsort
 import re
@@ -83,4 +84,8 @@ def _preprocess_bw_data(src_path: str, dst_path: str) -> int:
 
 
 if __name__ == '__main__':
-    print("Num positions: ", _preprocess_bw_data("/mnt/smb/bandwidth", "/mnt/bandwidth.csv"))
+    if sys.argv == 1:
+        print("Num bw measurements: ", _preprocess_bw_data("/mnt/smb/bandwidth", "/mnt/bandwidth.csv"))
+    else:
+        print("Src:", sys.argv[1], " Dst:", sys.argv[2], " Num bw measurements:",
+              _preprocess_bw_data(sys.argv[1], sys.argv[2]))
