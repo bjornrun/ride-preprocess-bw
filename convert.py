@@ -8,7 +8,6 @@ from collections import namedtuple
 import csv
 
 
-
 def _preprocess_bw_data(src_path: str, dst_path: str) -> int:
     pathlist = Path(src_path).glob('**/*.json')
 
@@ -84,7 +83,7 @@ def _preprocess_bw_data(src_path: str, dst_path: str) -> int:
 
 
 if __name__ == '__main__':
-    if sys.argv == 1:
+    if len(sys.argv) == 1:
         print("Num bw measurements: ", _preprocess_bw_data("/mnt/smb/bandwidth", "/mnt/bandwidth.csv"))
     else:
         print("Src:", sys.argv[1], " Dst:", sys.argv[2], " Num bw measurements:",
