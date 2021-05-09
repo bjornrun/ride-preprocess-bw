@@ -1,3 +1,4 @@
+import datetime
 import os
 import sys
 from pathlib import Path
@@ -28,7 +29,7 @@ def _preprocess_bw_data(src_path: str, dst_path: str) -> int:
         csv_out = csv.writer(file_out)
         csv_out.writerow(["year", "month", "day", "hour", "minute", "second", "lte_modem_latency", "5G_modem_latency",
                           "5G_mobil_latency", "IP", "bw_down", "bw_up", "lat", "lon", "ping",
-                          "test_server", "client_lat", "client_lon"])
+                          "test_server", "client_lat", "client_lon", "datetime"])
 
         row = 0
 
@@ -83,7 +84,9 @@ def _preprocess_bw_data(src_path: str, dst_path: str) -> int:
                                 [year, month, day, hour, minutes, seconds, float(data[0]["eno1"]["latency"]),
                                  float(data[1]["usb0"]["latency"]), float(data[2]["usb1"]["latency"]),
                                  ip, bw_down, bw_up, bw_srv_lat,
-                                 bw_srv_lon, bw_ping, bw_host, bw_client_lat, bw_client_lon])
+                                 bw_srv_lon, bw_ping, bw_host, bw_client_lat, bw_client_lon,
+                                 datetime.datetime(int(year), int(month), int(day), int(hour), int(minutes),
+                                                   int(seconds))])
 
                             row += 1
     return row
