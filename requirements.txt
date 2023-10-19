@@ -41,6 +41,6 @@ six==1.15.0
 strip-hints==0.1.9
 tabulate==0.8.9
 termcolor==1.1.0
-urllib3==1.26.4
+urllib3==1.26.18
 websocket-client==0.58.0
 wrapt==1.12.1
